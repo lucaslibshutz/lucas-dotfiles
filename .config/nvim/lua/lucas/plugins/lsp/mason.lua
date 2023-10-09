@@ -17,12 +17,13 @@ mason_lspconfig.setup({
     "matlab_ls",
     "remark_ls",
     "lua_ls",
+    -- "csharp_ls",
   }
 })
 
 -- mason_null_ls.setup({
---   ensure_installed = {
---     "pylint",
---     "eslint_d",
---   }
+  -- ensure_installed = {
+    -- "pylint",
+    -- "eslint_d",
+  -- }
 -- })

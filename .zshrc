@@ -142,6 +142,7 @@ unset __conda_setup
 
 export manim="/Users/lucaslibshutz/Library/Mobile Documents/com~apple~CloudDocs/manimprojs/"
 export onedrive="/Users/lucaslibshutz/OneDrive - Cornell University/"
+export cs="/Users/lucaslibshutz/OneDrive - Cornell University/CS1112/"
 
 
 alias ll="eza -l -g --icons"
