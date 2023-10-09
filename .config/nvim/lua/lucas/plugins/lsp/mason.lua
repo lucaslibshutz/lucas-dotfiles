@@ -17,7 +17,7 @@ mason_lspconfig.setup({
     "matlab_ls",
     "remark_ls",
     "lua_ls",
-    -- "csharp_ls",
+    "csharp_ls",
   }
 })
 
