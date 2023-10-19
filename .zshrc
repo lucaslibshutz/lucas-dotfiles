@@ -148,3 +148,10 @@ export cs="/Users/lucaslibshutz/OneDrive - Cornell University/CS1112/"
 alias ll="eza -l -g --icons"
 alias lla="ll -a"
 alias c="clear"
+alias t="tetris"
+export DOTNET_ROOT="/opt/homebrew/opt/dotnet/libexec"
+
+alias vim="nvim"
+alias vi="nvim"
+
+alias ipy="ipython"

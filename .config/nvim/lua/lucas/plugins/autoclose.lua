@@ -1,4 +1,8 @@
 local setup, autoclose = pcall(require,"autoclose")
 if not setup then return end
 
-autoclose.setup()
+autoclose.setup({
+  options = {
+    disabled_filetypes = { "text", "markdown"}
+  }
+})
