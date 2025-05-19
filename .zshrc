@@ -143,11 +143,12 @@ unset __conda_setup
 export manim="/Users/lucaslibshutz/Library/Mobile Documents/com~apple~CloudDocs/manimprojs/"
 export onedrive="/Users/lucaslibshutz/OneDrive - Cornell University/"
 export cs="/Users/lucaslibshutz/OneDrive - Cornell University/CS1112/"
-export repos="/Users/lucas/Documents/repos"
+export repos="/Users/lucaslibshutz/Documents/repos"
 
 
 alias ll="eza -l -a -g --icons"
 alias lla="ll -a"
+
 alias c="clear"
 alias t="tetris"
 export DOTNET_ROOT="/opt/homebrew/opt/dotnet/libexec"
@@ -156,3 +157,18 @@ alias vim="nvim"
 alias vi="nvim"
 
 alias ipy="ipython"
+export vault="/Users/lucaslibshutz/Library/Mobile Documents/iCloud~md~obsidian/Documents/Lucas' Stuff/"
+export matlab="/Users/lucaslibshutz/Library/Mobile Documents/com~apple~CloudDocs/Matlab"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/lucaslibshutz/.cache/lm-studio/bin"
+export sp_stuff='/Users/lucaslibshutz/Library/Mobile Documents/com~apple~CloudDocs/scipy_stuff'
+export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
+export PATH="/Library/TeX/texbin/xetex:$PATH"
+
+# bun completions
+[ -s "/Users/lucaslibshutz/.bun/_bun" ] && source "/Users/lucaslibshutz/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
