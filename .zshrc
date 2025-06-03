@@ -146,8 +146,8 @@ export cs="/Users/lucaslibshutz/OneDrive - Cornell University/CS1112/"
 export repos="/Users/lucaslibshutz/Documents/repos"
 
 
-alias ll="eza -l -a -g --icons"
-alias lla="ll -a"
+alias ll="eza -l -a -g --icons $@"
+alias lt="ll --total-size"
 
 alias c="clear"
 alias t="tetris"
