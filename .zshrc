@@ -159,6 +159,7 @@ alias vi="nvim"
 alias ipy="ipython"
 export vault="/Users/lucaslibshutz/Library/Mobile Documents/iCloud~md~obsidian/Documents/Lucas' Stuff/"
 export matlab="/Users/lucaslibshutz/Library/Mobile Documents/com~apple~CloudDocs/Matlab"
+export italy="/Users/lucaslibshutz/Documents/Italy"
 
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/Users/lucaslibshutz/.cache/lm-studio/bin"
@@ -172,3 +173,5 @@ export PATH="/Library/TeX/texbin/xetex:$PATH"
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+export PATH="$PATH:$HOME/.local/bin"
