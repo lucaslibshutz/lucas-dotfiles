@@ -143,7 +143,7 @@ unset __conda_setup
 export manim="/Users/lucaslibshutz/Library/Mobile Documents/com~apple~CloudDocs/manimprojs/"
 export onedrive="/Users/lucaslibshutz/OneDrive - Cornell University/"
 export cs="/Users/lucaslibshutz/OneDrive - Cornell University/CS1112/"
-export repos="/Users/lucaslibshutz/Documents/repos"
+export repos="/Users/lucaslibshutz/Documents/Repos"
 
 
 alias ll="eza -l -a -g --icons $@"
@@ -160,6 +160,9 @@ alias ipy="ipython"
 export vault="/Users/lucaslibshutz/Library/Mobile Documents/iCloud~md~obsidian/Documents/Lucas' Stuff/"
 export matlab="/Users/lucaslibshutz/Library/Mobile Documents/com~apple~CloudDocs/Matlab"
 export italy="/Users/lucaslibshutz/Documents/Italy"
+export element="/Users/lucaslibshutz/Documents/Italy/Repos/element_RL-with-closed-chain/"
+export scripts="/Users/lucaslibshutz/Documents/Scripts"
+export jaxcon="/Users/lucaslibshutz/Documents/Italy/Repos/jaxcon"
 
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/Users/lucaslibshutz/.cache/lm-studio/bin"

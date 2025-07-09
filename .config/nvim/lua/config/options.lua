@@ -4,3 +4,7 @@
 
 vim.o.relativenumber = false
 vim.o.number = true
+
+vim.opt.smartindent = false
+vim.opt.autoindent = false
+vim.opt.cindent = false
