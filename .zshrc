@@ -144,6 +144,7 @@ export manim="/Users/lucaslibshutz/Library/Mobile Documents/com~apple~CloudDocs/
 export onedrive="/Users/lucaslibshutz/OneDrive - Cornell University/"
 export cs="/Users/lucaslibshutz/OneDrive - Cornell University/CS1112/"
 export repos="/Users/lucaslibshutz/Documents/Repos"
+export scripts="/Users/lucaslibshutz/Documents/Scripts/shell/"
 
 
 alias ll="eza -l -a -g --icons $@"
@@ -161,8 +162,9 @@ export vault="/Users/lucaslibshutz/Library/Mobile Documents/iCloud~md~obsidian/D
 export matlab="/Users/lucaslibshutz/Library/Mobile Documents/com~apple~CloudDocs/Matlab"
 export italy="/Users/lucaslibshutz/Documents/Italy"
 export element="/Users/lucaslibshutz/Documents/Italy/Repos/element_RL-with-closed-chain/"
-export scripts="/Users/lucaslibshutz/Documents/Scripts"
 export jaxcon="/Users/lucaslibshutz/Documents/Italy/Repos/jaxcon"
+export portfolio="/Users/lucaslibshutz/Documents/Repos/portfolio-glass"
+export cornell="/Users/lucaslibshutz/Documents/Repos/cornellRepos/"
 
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/Users/lucaslibshutz/.cache/lm-studio/bin"
@@ -178,3 +180,31 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
 export PATH="$PATH:$HOME/.local/bin"
+
+# cursor changing functionality
+function zle-keymap-select {
+  if [[ $KEYMAP == vicmd ]]; then
+    echo -ne '\e[1 q'   # Block cursor
+  else
+    echo -ne '\e[5 q'   # Beam (line) cursor
+  fi
+}
+zle -N zle-keymap-select
+
+# Also handle on startup and after line execution
+function zle-line-init {
+  echo -ne '\e[5 q'   # Start in insert mode (beam)
+}
+zle -N zle-line-init
+
+function zle-line-finish {
+  echo -ne '\e[5 q'   # Reset to insert mode after command is run
+}
+zle -N zle-line-finish
+
+# Enable VI mode
+bindkey -v
+
+# Set nvim as editor
+export EDITOR="nvim"
+export parts="/Users/lucaslibshutz/Documents/CEV/neededParts"
