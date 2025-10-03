@@ -208,3 +208,5 @@ bindkey -v
 # Set nvim as editor
 export EDITOR="nvim"
 export parts="/Users/lucaslibshutz/Documents/CEV/neededParts"
+export dotfiles="/Users/lucaslibshutz/Documents/Repos/lucas-dotfiles"
+export GPG_TTY=$(tty)
