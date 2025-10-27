@@ -204,9 +204,12 @@ zle -N zle-line-finish
 
 # Enable VI mode
 bindkey -v
+bindkey "^R" history-incremental-search-backward
 
 # Set nvim as editor
 export EDITOR="nvim"
 export parts="/Users/lucaslibshutz/Documents/CEV/neededParts"
 export dotfiles="/Users/lucaslibshutz/Documents/Repos/lucas-dotfiles"
 export GPG_TTY=$(tty)
+export DOCKER_BUILDKIT=1
+eval "$(atuin init zsh)"
