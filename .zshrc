@@ -144,6 +144,7 @@ export manim="/Users/lucaslibshutz/Library/Mobile Documents/com~apple~CloudDocs/
 export onedrive="/Users/lucaslibshutz/OneDrive - Cornell University/"
 export cs="/Users/lucaslibshutz/OneDrive - Cornell University/CS1112/"
 export repos="/Users/lucaslibshutz/Documents/Repos"
+export projects="/users/lucaslibshutz/Documents/Projects"
 export scripts="/Users/lucaslibshutz/Documents/Scripts/shell/"
 
 
@@ -213,3 +214,6 @@ export dotfiles="/Users/lucaslibshutz/Documents/Repos/lucas-dotfiles"
 export GPG_TTY=$(tty)
 export DOCKER_BUILDKIT=1
 eval "$(atuin init zsh)"
+export jobs="/Users/lucaslibshutz/Documents/Cornell/jobStuff"
+export CPATH="$(brew --prefix eigen)/include/:$CPATH"
+export CPATH="$(brew --prefix eigen)/include/eigen3:$CPATH"
