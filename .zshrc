@@ -144,7 +144,7 @@ export manim="/Users/lucaslibshutz/Library/Mobile Documents/com~apple~CloudDocs/
 export onedrive="/Users/lucaslibshutz/OneDrive - Cornell University/"
 export cs="/Users/lucaslibshutz/OneDrive - Cornell University/CS1112/"
 export repos="/Users/lucaslibshutz/Documents/Repos"
-export projects="/users/lucaslibshutz/Documents/Projects"
+export projects="/Users/lucaslibshutz/Documents/Projects"
 export scripts="/Users/lucaslibshutz/Documents/Scripts/shell/"
 
 
