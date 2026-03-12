@@ -155,8 +155,8 @@ alias c="clear"
 alias t="tetris"
 export DOTNET_ROOT="/opt/homebrew/opt/dotnet/libexec"
 
-alias vim="nvim"
-alias vi="nvim"
+# alias vim="nvim"
+# alias vi="nvim"
 
 alias ipy="ipython"
 export vault="/Users/lucaslibshutz/Library/Mobile Documents/iCloud~md~obsidian/Documents/Lucas' Stuff/"
@@ -181,6 +181,7 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
 export PATH="$PATH:$HOME/.local/bin"
+export PATH="$HOME/.cargo/bin:$PATH"
 
 # cursor changing functionality
 function zle-keymap-select {
@@ -217,3 +218,10 @@ eval "$(atuin init zsh)"
 export jobs="/Users/lucaslibshutz/Documents/Cornell/jobStuff"
 export CPATH="$(brew --prefix eigen)/include/:$CPATH"
 export CPATH="$(brew --prefix eigen)/include/eigen3:$CPATH"
+export PICO_SDK_PATH="$HOME/pico/pico-sdk"
+export DOTNET_ROOT="/opt/homebrew/opt/dotnet/libexec"
+export MBE="/Users/lucaslibshutz/Documents/Cornell/MBE"
+export robotics="/Users/lucaslibshutz/Documents/Robotics"
+export autonomy="/Users/lucaslibshutz/Documents/Repos/autonomy"
+export PATH="/opt/arm-gnu-toolchain/bin:$PATH"
+export PATH="$HOME/go/bin:$PATH"
