@@ -214,7 +214,6 @@ export parts="/Users/lucaslibshutz/Documents/CEV/neededParts"
 export dotfiles="/Users/lucaslibshutz/Documents/Repos/lucas-dotfiles"
 export GPG_TTY=$(tty)
 export DOCKER_BUILDKIT=1
-eval "$(atuin init zsh)"
 export jobs="/Users/lucaslibshutz/Documents/Cornell/jobStuff"
 export CPATH="$(brew --prefix eigen)/include/:$CPATH"
 export CPATH="$(brew --prefix eigen)/include/eigen3:$CPATH"
@@ -225,3 +224,7 @@ export robotics="/Users/lucaslibshutz/Documents/Robotics"
 export autonomy="/Users/lucaslibshutz/Documents/Repos/autonomy"
 export PATH="/opt/arm-gnu-toolchain/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
+export PATH="$PATH:/Applications/Obsidian.app/Contents/MacOS"
+
+# Add FZF integration
+source <(fzf --zsh)

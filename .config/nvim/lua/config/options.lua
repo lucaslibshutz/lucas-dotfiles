@@ -4,7 +4,9 @@
 
 vim.o.relativenumber = false
 vim.o.number = true
+vim.o.exrc = true
 
 vim.opt.smartindent = false
 vim.opt.autoindent = false
 vim.opt.cindent = false
+vim.opt.conceallevel = 0
