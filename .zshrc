@@ -1,230 +1,218 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
+# ══════════════════════════════════════════════════════════
+#  .zshrc — WSL edition
+#  Adapted from Lucas's macOS dotfiles
+# ══════════════════════════════════════════════════════════
+
+# ── Path ──────────────────────────────────────────────────
+export PATH="$HOME/.local/bin:$HOME/bin:/usr/local/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"          # Rust / cargo
+export PATH="$HOME/go/bin:$PATH"              # Go binaries
+export PATH="$HOME/.bun/bin:$PATH"            # Bun
+
+# ── Oh My Zsh ────────────────────────────────────────────
+export ZSH="$HOME/.oh-my-zsh"
+
+# Theme: powerlevel10k (same as macOS config)
+ZSH_THEME="powerlevel10k/powerlevel10k"
+
+# Plugins
+plugins=(
+  git
+  zsh-autosuggestions
+  zsh-syntax-highlighting
+  tmux
+  fzf
+  z                    # directory jumping (built into OMZ)
+  docker
+  docker-compose
+  npm
+  pip
+  python
+  golang
+  rust
+  history-substring-search
+  colored-man-pages
+  extract
+)
+
+# P10k instant prompt (keep near top)
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+source "$ZSH/oh-my-zsh.sh"
 
-# Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
+# ── Editor ───────────────────────────────────────────────
+export EDITOR="nvim"
+export VISUAL="nvim"
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="powerlevel10k/powerlevel10k"
+# ── Aliases: navigation ───────────────────────────────────
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias ~="cd ~"
 
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in $ZSH/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
-
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
-
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
-
-# Uncomment one of the following lines to change the auto-update behavior
-# zstyle ':omz:update' mode disabled  # disable automatic updates
-# zstyle ':omz:update' mode auto      # update automatically without asking
-# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
-
-# Uncomment the following line to change how often to auto-update (in days).
-# zstyle ':omz:update' frequency 13
-
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS="true"
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# You can also set it to another string to have that shown instead of the default red dots.
-# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
-# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-#! HOMEBREW INITIALIZATION
-export PATH=/opt/homebrew/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin
-export PATH="/opt/homebrew/sbin:$PATH"
-export PATH=$HOME/bin:/usr/local/bin:/opt/homebrew/bin:$PATH
-
-# Which plugins would you like to load?
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(
-	git
-	zsh-syntax-highlighting
-	zsh-autosuggestions
-	tmux
-)
-
-source $ZSH/oh-my-zsh.sh
-
-# User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-#! Lucas stuff
-
-export PATH=/usr/local/anaconda3/bin:$PATH
-export PATH=/opt/homebrew/anaconda3/bin:$PATH
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/lucaslibshutz/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
+# ── Aliases: listing ──────────────────────────────────────
+# Use eza if available, fall back to ls
+if command -v eza &>/dev/null; then
+  alias ls="eza --icons"
+  alias ll="eza -l -a -g --icons --git"
+  alias lt="eza -T --icons --git-ignore"    # tree view
+  alias la="eza -la --icons"
 else
-    if [ -f "/Users/lucaslibshutz/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/lucaslibshutz/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/Users/lucaslibshutz/anaconda3/bin:$PATH"
-    fi
+  alias ls="ls --color=auto"
+  alias ll="ls -lah"
+  alias la="ls -la"
 fi
-unset __conda_setup
-# <<< conda initialize <<<
 
-export manim="/Users/lucaslibshutz/Library/Mobile Documents/com~apple~CloudDocs/manimprojs/"
-export onedrive="/Users/lucaslibshutz/OneDrive - Cornell University/"
-export cs="/Users/lucaslibshutz/OneDrive - Cornell University/CS1112/"
-export repos="/Users/lucaslibshutz/Documents/Repos"
-export projects="/Users/lucaslibshutz/Documents/Projects"
-export scripts="/Users/lucaslibshutz/Documents/Scripts/shell/"
+# ── Aliases: editors ──────────────────────────────────────
+alias vim="nvim"
+alias vi="nvim"
+alias v="nvim"
 
+# ── Aliases: git ──────────────────────────────────────────
+alias g="git"
+alias ga="git add"
+alias gaa="git add --all"
+alias gc="git commit"
+alias gcm="git commit -m"
+alias gco="git checkout"
+alias gcb="git checkout -b"
+alias gd="git diff"
+alias gds="git diff --staged"
+alias gl="git log --oneline --graph --decorate --all"
+alias gp="git push"
+alias gpf="git push --force-with-lease"
+alias gpl="git pull"
+alias gst="git status"
+alias grb="git rebase"
+alias grs="git restore"
+alias grss="git restore --staged"
+alias gsw="git switch"
 
-alias ll="eza -l -a -g --icons $@"
-alias lt="ll --total-size"
-
+# ── Aliases: utilities ───────────────────────────────────
 alias c="clear"
-alias t="tetris"
-export DOTNET_ROOT="/opt/homebrew/opt/dotnet/libexec"
+alias reload="source ~/.zshrc"
+alias zshrc="$EDITOR ~/.zshrc"
+alias tmuxrc="$EDITOR ~/.config/tmux/tmux.conf"
+alias nvimrc="$EDITOR ~/.config/nvim"
+alias dotfiles="cd ~/dotfiles"
 
-# alias vim="nvim"
-# alias vi="nvim"
+# Grep with color
+alias grep="grep --color=auto"
+alias fgrep="fgrep --color=auto"
+alias egrep="egrep --color=auto"
 
+# Safer rm
+alias rm="rm -i"
+alias cp="cp -i"
+alias mv="mv -i"
+
+# WSL-specific: open Windows Explorer in current directory
+alias open="explorer.exe ."
+alias winhome='cd /mnt/c/Users/$(cmd.exe /c "echo %USERNAME%" 2>/dev/null | tr -d "\r")'
+
+# Docker
+alias d="docker"
+alias dc="docker compose"
+alias dps="docker ps"
+alias dpsa="docker ps -a"
+
+# Python
+alias py="python3"
+alias pip="pip3"
 alias ipy="ipython"
-export vault="/Users/lucaslibshutz/Library/Mobile Documents/iCloud~md~obsidian/Documents/Lucas' Stuff/"
-export matlab="/Users/lucaslibshutz/Library/Mobile Documents/com~apple~CloudDocs/Matlab"
-export italy="/Users/lucaslibshutz/Documents/Italy"
-export element="/Users/lucaslibshutz/Documents/Italy/Repos/element_RL-with-closed-chain/"
-export jaxcon="/Users/lucaslibshutz/Documents/Italy/Repos/jaxcon"
-export portfolio="/Users/lucaslibshutz/Documents/Repos/portfolio-glass"
-export cornell="/Users/lucaslibshutz/Documents/Repos/cornellRepos/"
+alias venv="python3 -m venv .venv && source .venv/bin/activate"
+alias activate="source .venv/bin/activate"
 
-# Added by LM Studio CLI (lms)
-export PATH="$PATH:/Users/lucaslibshutz/.cache/lm-studio/bin"
-export sp_stuff='/Users/lucaslibshutz/Library/Mobile Documents/com~apple~CloudDocs/scipy_stuff'
-export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
-export PATH="/Library/TeX/texbin/xetex:$PATH"
+# ── Environment exports ───────────────────────────────────
+export repos="$HOME/repos"
+export projects="$HOME/projects"
 
-# bun completions
-[ -s "/Users/lucaslibshutz/.bun/_bun" ] && source "/Users/lucaslibshutz/.bun/_bun"
+# GPG (needed for git signing in WSL)
+export GPG_TTY=$(tty)
 
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
+# Docker BuildKit
+export DOCKER_BUILDKIT=1
 
-export PATH="$PATH:$HOME/.local/bin"
-export PATH="$HOME/.cargo/bin:$PATH"
+# ── NVM (Node Version Manager) ───────────────────────────
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
-# cursor changing functionality
+# ── pyenv ────────────────────────────────────────────────
+if command -v pyenv &>/dev/null; then
+  export PYENV_ROOT="$HOME/.pyenv"
+  export PATH="$PYENV_ROOT/bin:$PATH"
+  eval "$(pyenv init --path)"
+  eval "$(pyenv init -)"
+fi
+
+# ── zoxide (smarter cd) ───────────────────────────────────
+if command -v zoxide &>/dev/null; then
+  eval "$(zoxide init zsh --cmd cd)"
+fi
+
+# ── fzf ──────────────────────────────────────────────────
+if command -v fzf &>/dev/null; then
+  source <(fzf --zsh 2>/dev/null) || true
+  export FZF_DEFAULT_OPTS="
+    --color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8
+    --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc
+    --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8
+    --height 40% --border rounded --layout reverse
+    --preview-window='right:60%:wrap'
+  "
+  # Use ripgrep for fzf if available
+  if command -v rg &>/dev/null; then
+    export FZF_DEFAULT_COMMAND="rg --files --hidden --follow --glob '!.git'"
+    export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+  fi
+fi
+
+# ── atuin (shell history) ─────────────────────────────────
+if command -v atuin &>/dev/null; then
+  eval "$(atuin init zsh)"
+fi
+
+# ── Vi mode (same as macOS config) ───────────────────────
+bindkey -v
+bindkey "^R" history-incremental-search-backward
+
+# Cursor shape changes for vi mode
 function zle-keymap-select {
   if [[ $KEYMAP == vicmd ]]; then
-    echo -ne '\e[1 q'   # Block cursor
+    echo -ne '\e[1 q'   # Block cursor (normal mode)
   else
-    echo -ne '\e[5 q'   # Beam (line) cursor
+    echo -ne '\e[5 q'   # Beam cursor (insert mode)
   fi
 }
 zle -N zle-keymap-select
 
-# Also handle on startup and after line execution
 function zle-line-init {
-  echo -ne '\e[5 q'   # Start in insert mode (beam)
+  echo -ne '\e[5 q'   # Start in insert mode
 }
 zle -N zle-line-init
 
 function zle-line-finish {
-  echo -ne '\e[5 q'   # Reset to insert mode after command is run
+  echo -ne '\e[5 q'   # Reset after command runs
 }
 zle -N zle-line-finish
 
-# Enable VI mode
-bindkey -v
-bindkey "^R" history-incremental-search-backward
+# ── History ───────────────────────────────────────────────
+HISTFILE="$HOME/.zsh_history"
+HISTSIZE=50000
+SAVEHIST=50000
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_FIND_NO_DUPS
+setopt INC_APPEND_HISTORY
+setopt SHARE_HISTORY
+setopt HIST_REDUCE_BLANKS
 
-# Set nvim as editor
-export EDITOR="nvim"
-export parts="/Users/lucaslibshutz/Documents/CEV/neededParts"
-export dotfiles="/Users/lucaslibshutz/Documents/Repos/lucas-dotfiles"
-export GPG_TTY=$(tty)
-export DOCKER_BUILDKIT=1
-export jobs="/Users/lucaslibshutz/Documents/Cornell/jobStuff"
-export CPATH="$(brew --prefix eigen)/include/:$CPATH"
-export CPATH="$(brew --prefix eigen)/include/eigen3:$CPATH"
-export PICO_SDK_PATH="$HOME/pico/pico-sdk"
-export DOTNET_ROOT="/opt/homebrew/opt/dotnet/libexec"
-export MBE="/Users/lucaslibshutz/Documents/Cornell/MBE"
-export robotics="/Users/lucaslibshutz/Documents/Robotics"
-export autonomy="/Users/lucaslibshutz/Documents/Repos/autonomy"
-export PATH="/opt/arm-gnu-toolchain/bin:$PATH"
-export PATH="$HOME/go/bin:$PATH"
-export PATH="$PATH:/Applications/Obsidian.app/Contents/MacOS"
+# ── Completion ────────────────────────────────────────────
+autoload -U compinit && compinit
+zstyle ':completion:*' menu select
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'  # case-insensitive completion
 
-# Add FZF integration
-source <(fzf --zsh)
+# ── Powerlevel10k ─────────────────────────────────────────
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
