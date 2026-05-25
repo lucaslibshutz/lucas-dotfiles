@@ -72,7 +72,7 @@ return {
 
   -- Mason: auto-install LSP servers
   {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
     opts = {
       ensure_installed = {
         -- LSP
