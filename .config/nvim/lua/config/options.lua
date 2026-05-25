@@ -5,7 +5,7 @@ local opt = vim.opt
 
 -- Line numbers
 opt.number = true
-opt.relativenumber = true
+opt.relativenumber = false
 
 -- Indentation
 opt.tabstop = 2
@@ -26,7 +26,7 @@ opt.cursorline = true
 opt.scrolloff = 8
 opt.sidescrolloff = 8
 opt.colorcolumn = "100"
-opt.conceallevel = 0  -- don't hide quotes in markdown/JSON
+opt.conceallevel = 0 -- don't hide quotes in markdown/JSON
 
 -- Splits
 opt.splitbelow = true
