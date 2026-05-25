@@ -18,7 +18,7 @@ require("lazy").setup({
   spec = {
     -- LazyVim distro base
     { "LazyVim/LazyVim", import = "lazyvim.plugins", opts = {
-      colorscheme = "catppuccin",
+      colorscheme = "solarized-osaka",
     } },
     -- Language extras
     { import = "lazyvim.plugins.extras.lang.typescript" },
@@ -35,7 +35,7 @@ require("lazy").setup({
     lazy = false,
     version = false,
   },
-  install = { colorscheme = { "catppuccin", "tokyonight", "habamax" } },
+  install = { colorscheme = { "solarized-osaka", "tokyonight", "habamax" } },
   checker = {
     enabled = true,
     notify = false,
