@@ -10,6 +10,10 @@ set -euo pipefail
 DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 DRY_RUN=false
 
+# Ensure ~/.local/bin exists and is on PATH for this session
+mkdir -p "$HOME/.local/bin"
+export PATH="$HOME/.local/bin:$PATH"
+
 # ── Helpers ───────────────────────────────────────────────
 info()    { echo -e "\033[34m[INFO]\033[0m  $*"; }
 success() { echo -e "\033[32m[OK]\033[0m    $*"; }
@@ -73,7 +77,13 @@ if ! $DRY_RUN; then
     fontconfig \
     ca-certificates \
     gpg \
+    locales \
     2>/dev/null
+  # Set up locale (avoids garbled output from Rust/atuin installers)
+  sudo locale-gen en_US.UTF-8
+  sudo update-locale LANG=en_US.UTF-8
+  export LANG=en_US.UTF-8
+  export LC_ALL=en_US.UTF-8
   success "APT packages installed"
 else
   info "[dry-run] apt-get install ..."
@@ -98,14 +108,17 @@ if ! have nvim || [[ "$(nvim --version | head -1)" < "NVIM v0.10" ]]; then
   info "Installing Neovim (latest stable)..."
   if ! $DRY_RUN; then
     NVIM_URL="https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.appimage"
-    NVIM_DEST="$HOME/.local/bin/nvim.appimage"
-    mkdir -p "$HOME/.local/bin"
-    curl -Lo "$NVIM_DEST" "$NVIM_URL"
-    chmod +x "$NVIM_DEST"
-    # Extract appimage (no FUSE needed in WSL)
-    cd "$HOME/.local"
-    "$NVIM_DEST" --appimage-extract &>/dev/null || true
-    ln -sf "$HOME/.local/squashfs-root/usr/bin/nvim" "$HOME/.local/bin/nvim"
+    NVIM_APPIMAGE="$HOME/.local/bin/nvim.appimage"
+    NVIM_EXTRACT_DIR="$HOME/.local/nvim-appimage"
+    curl -Lo "$NVIM_APPIMAGE" "$NVIM_URL"
+    chmod +x "$NVIM_APPIMAGE"
+    # Extract appimage (no FUSE needed in WSL); use a stable target dir
+    rm -rf "$NVIM_EXTRACT_DIR"
+    mkdir -p "$NVIM_EXTRACT_DIR"
+    cd "$NVIM_EXTRACT_DIR"
+    "$NVIM_APPIMAGE" --appimage-extract &>/dev/null || true
+    cd "$DOTFILES_DIR"
+    ln -sf "$NVIM_EXTRACT_DIR/squashfs-root/usr/bin/nvim" "$HOME/.local/bin/nvim"
     success "Neovim installed"
   else
     info "[dry-run] install nvim"
@@ -218,7 +231,7 @@ fi
 if [[ ! -d "$HOME/.nvm" ]]; then
   info "Installing NVM..."
   if ! $DRY_RUN; then
-    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
     # Load nvm for this session
     export NVM_DIR="$HOME/.nvm"
     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
@@ -289,7 +302,8 @@ symlink "$DOTFILES_DIR/.config/atuin/config.toml" "$HOME/.config/atuin/config.to
 if [[ "$(basename "$SHELL")" != "zsh" ]]; then
   info "Setting zsh as default shell..."
   if ! $DRY_RUN; then
-    chsh -s "$(which zsh)"
+    # sudo required on fresh Ubuntu where chsh may not update /etc/passwd unprompted
+    sudo chsh -s "$(which zsh)" "$USER"
     success "Default shell set to zsh (takes effect on next login)"
   else
     info "[dry-run] chsh -s $(which zsh)"
