@@ -216,3 +216,14 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'  # case-insensitive completi
 
 # ── Powerlevel10k ─────────────────────────────────────────
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# Autostart TMUX with terminal, no IDE
+if [ -z "$TMUX" ] && [ -z "$VSCODE_INJECTION" ] && [ -z "$INTELLIJ_ENVIRONMENT_READER"] && [ "$TERM_PROGRAM" != "vscode" ] && [ "$TERMINAL_EMULATOR" != "JetBrains-JediTerm" ] && [ -z "$SSH_TTY" ]; then
+  exec tmux new-session -s "tmux-$$"
+fi
+
+export PATH="/home/llibshutz/.pixi/bin:$PATH"
+export vault="/home/llibshutz/Documents/lucas-stuff/Lucas' Stuff/"
+
+export PATH="/usr/local/cuda-12.9/bin:$PATH"
+export LD_LIBRARY_PATH="/usr/local/cuda-12.9/lib64:$LD_LIBRARY_PATH"

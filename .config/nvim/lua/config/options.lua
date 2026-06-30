@@ -58,3 +58,4 @@ opt.exrc = true
 -- Editor
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
+vim.g.autoformat = false
